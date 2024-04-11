@@ -17,7 +17,7 @@ try {
     <img src=${data.image.small} />
     <span>${data.name}</span>
     `
-    document.getElementById("crypto").inerHTML +=`
+    document.getElementById("crypto").innerHTML +=`
     <p>🎯: $${data.market_data.current_price.usd}</p>
     <p>👆: $${data.market_data.high_24h.usd}</p>
     <p>👇: $${data.market_dats.low_24h.used}</p>
