@@ -20,6 +20,7 @@ try {
     document.getElementById("crypto").inerHTML +=`
     <p>🎯: $${data.market_data.current_price.usd}</p>
     <p>👆: $${data.market_data.high_24h.usd}</p>
+    <p>👇: $${data.market_dats.low_24h.used}</p>
     `
 } catch (err) {
     console.error(err)
@@ -37,7 +38,16 @@ navigator.geolocation.getCurrentPosition(async position =>{
     try {
         const res = await fetch(`https://apis.scrimba.com/openweathermap/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=imperial`)
         if (!res.ok) {
-            throw Error("Weather data")
+            throw Error("Weather data noy avaialble")
         }
+        const data = await res.json()
+        const iconUrl = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
+        document.getElementById("weather").innerHTML = `
+        <img src=${iconUrl} />
+        <p class="weather-temp">${Math.round(data.main.temp)}º</p>
+        <p class="weather-city">${data.name}</p>
+        `
+    } catch (err) {
+        console.error(err)
     }
-})
+});
