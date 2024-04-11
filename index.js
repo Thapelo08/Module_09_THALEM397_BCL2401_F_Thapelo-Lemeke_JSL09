@@ -20,7 +20,7 @@ try {
     document.getElementById("crypto").innerHTML +=`
     <p>🎯: $${data.market_data.current_price.usd}</p>
     <p>👆: $${data.market_data.high_24h.usd}</p>
-    <p>👇: $${data.market_dats.low_24h.used}</p>
+    <p>👇: $${data.market_data.low_24h.used}</p>
     `
 } catch (err) {
     console.error(err)
@@ -28,7 +28,7 @@ try {
 
 function getCurrentTime() {
     const data = new Date()
-    document.getElementById("time").textContent = date.roLocaleTimeString("en-us", { timeStyle:
+    document.getElementById("time").textContent = date.toLocaleTimeString("en-us", { timeStyle:
     "short"})
 }
 
@@ -38,7 +38,7 @@ navigator.geolocation.getCurrentPosition(async position =>{
     try {
         const res = await fetch(`https://apis.scrimba.com/openweathermap/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=imperial`)
         if (!res.ok) {
-            throw Error("Weather data noy avaialble")
+            throw Error("Weather data not avaialble")
         }
         const data = await res.json()
         const iconUrl = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
