@@ -28,8 +28,7 @@ try {
 
 function getCurrentTime() {
     const data = new Date()
-    document.getElementById("time").textContent = date.toLocaleTimeString("en-us", { timeStyle:
-    "short"})
+    document.getElementById("time").textContent = date.toLocaleTimeString("en-us", { timeStyle:"short"})
 }
 
 setInterval(getCurrentTime, 1000)
